@@ -172,14 +172,14 @@ export default function CreateHackathonPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       {/* Title */}
-      <div className="border-b border-slate-800 pb-6">
+      <div className="border-b border-dark-800 pb-6">
         <div className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 shadow-inner">
+          <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 text-primary border border-primary/20 shadow-inner">
             <Rocket className="h-6 w-6" />
           </div>
           <div>
-            <h1 className="text-3xl font-black text-white">Host a Hackathon</h1>
-            <p className="text-xs sm:text-sm text-slate-400">
+            <h1 className="text-3xl font-extrabold text-white tracking-tight">Host a Hackathon</h1>
+            <p className="text-xs sm:text-sm text-dark-300">
               Configure your event details, prize bounties, custom tracks, and weighted scoring rubric.
             </p>
           </div>
@@ -187,7 +187,7 @@ export default function CreateHackathonPage() {
       </div>
 
       {/* Steps Pill */}
-      <div className="flex items-center justify-between border-b border-slate-800/80 pb-3">
+      <div className="flex items-center justify-between border-b border-dark-800/80 pb-3">
         {[
           { num: 1, label: "Basics & Logistics" },
           { num: 2, label: "Tracks & Prizes" },
@@ -197,14 +197,14 @@ export default function CreateHackathonPage() {
             key={s.num}
             onClick={() => setStep(s.num)}
             className={`flex items-center gap-2 text-xs font-bold transition-all ${
-              step === s.num ? "text-indigo-400" : "text-slate-500 hover:text-slate-300"
+              step === s.num ? "text-primary" : "text-dark-500 hover:text-dark-300"
             }`}
           >
             <span
-              className={`flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-black ${
+              className={`flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-mono font-bold ${
                 step === s.num
-                  ? "bg-indigo-600 text-white"
-                  : "border border-slate-800 bg-slate-900"
+                  ? "bg-primary text-dark-950"
+                  : "border border-dark-800 bg-dark-900"
               }`}
             >
               {s.num}
@@ -215,14 +215,14 @@ export default function CreateHackathonPage() {
       </div>
 
       {/* Form Container */}
-      <div className="glass-card rounded-2xl border-slate-800 p-6 sm:p-8 space-y-6">
+      <div className="glass-card rounded-2xl border-dark-800/80 p-6 sm:p-8 space-y-6 shadow-xl backdrop-blur-sm">
         {/* STEP 1 */}
         {step === 1 && (
           <div className="space-y-5 animate-in fade-in">
-            <h3 className="text-lg font-bold text-white">Hackathon Basics & Details</h3>
+            <h3 className="text-lg font-bold text-white tracking-tight">Hackathon Basics & Details</h3>
 
             <div>
-              <label className="block text-xs font-semibold uppercase text-slate-300 mb-1">
+              <label className="block text-xs font-semibold uppercase text-dark-300 mb-1">
                 Hackathon Title *
               </label>
               <input
@@ -231,12 +231,12 @@ export default function CreateHackathonPage() {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="e.g. Autonomous Agents Global Sprint 2026"
-                className="w-full rounded-xl border border-slate-800 bg-slate-950 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-indigo-500 focus:outline-none"
+                className="w-full rounded-xl border border-dark-800 bg-dark-950 px-4 py-3 text-sm text-white placeholder-dark-500 focus:border-primary focus:outline-none"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold uppercase text-slate-300 mb-1">
+              <label className="block text-xs font-semibold uppercase text-dark-300 mb-1">
                 Tagline *
               </label>
               <input
@@ -245,13 +245,13 @@ export default function CreateHackathonPage() {
                 value={tagline}
                 onChange={(e) => setTagline(e.target.value)}
                 placeholder="Short punchy summary for the discovery directory"
-                className="w-full rounded-xl border border-slate-800 bg-slate-950 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-indigo-500 focus:outline-none"
+                className="w-full rounded-xl border border-dark-800 bg-dark-950 px-4 py-3 text-sm text-white placeholder-dark-500 focus:border-primary focus:outline-none"
               />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold uppercase text-slate-300 mb-1">
+                <label className="block text-xs font-semibold uppercase text-dark-300 mb-1">
                   Organizer Organization Name *
                 </label>
                 <input
@@ -259,12 +259,12 @@ export default function CreateHackathonPage() {
                   required
                   value={organizerName}
                   onChange={(e) => setOrganizerName(e.target.value)}
-                  className="w-full rounded-xl border border-slate-800 bg-slate-950 px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:border-indigo-500 focus:outline-none"
+                  className="w-full rounded-xl border border-dark-800 bg-dark-950 px-4 py-2.5 text-xs text-white placeholder-dark-500 focus:border-primary focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold uppercase text-slate-300 mb-1">
+                <label className="block text-xs font-semibold uppercase text-dark-300 mb-1">
                   Organizer Contact Email *
                 </label>
                 <input
@@ -272,20 +272,20 @@ export default function CreateHackathonPage() {
                   required
                   value={organizerEmail}
                   onChange={(e) => setOrganizerEmail(e.target.value)}
-                  className="w-full rounded-xl border border-slate-800 bg-slate-950 px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:border-indigo-500 focus:outline-none"
+                  className="w-full rounded-xl border border-dark-800 bg-dark-950 px-4 py-2.5 text-xs text-white placeholder-dark-500 focus:border-primary focus:outline-none"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold uppercase text-slate-300 mb-1">
+                <label className="block text-xs font-semibold uppercase text-dark-300 mb-1">
                   Event Format
                 </label>
                 <select
                   value={format}
                   onChange={(e) => setFormat(e.target.value as any)}
-                  className="w-full rounded-xl border border-slate-800 bg-slate-950 px-4 py-2.5 text-xs text-slate-300 focus:border-indigo-500 focus:outline-none"
+                  className="w-full rounded-xl border border-dark-800 bg-dark-950 px-4 py-2.5 text-xs text-dark-200 focus:border-primary focus:outline-none"
                 >
                   <option value="online">Online / Virtual Worldwide</option>
                   <option value="in-person">In-Person</option>
@@ -294,7 +294,7 @@ export default function CreateHackathonPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold uppercase text-slate-300 mb-1">
+                <label className="block text-xs font-semibold uppercase text-dark-300 mb-1">
                   Total Prize Pool Display *
                 </label>
                 <input
@@ -302,32 +302,32 @@ export default function CreateHackathonPage() {
                   value={totalPrizePool}
                   onChange={(e) => setTotalPrizePool(e.target.value)}
                   placeholder="e.g. $50,000"
-                  className="w-full rounded-xl border border-slate-800 bg-slate-950 px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:border-indigo-500 focus:outline-none"
+                  className="w-full rounded-xl border border-dark-800 bg-dark-950 px-4 py-2.5 text-xs text-white placeholder-dark-500 focus:border-primary focus:outline-none font-mono"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold uppercase text-slate-300 mb-1">
+              <label className="block text-xs font-semibold uppercase text-dark-300 mb-1">
                 Banner Cover Image URL
               </label>
               <input
                 type="url"
                 value={bannerUrl}
                 onChange={(e) => setBannerUrl(e.target.value)}
-                className="w-full rounded-xl border border-slate-800 bg-slate-950 px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:border-indigo-500 focus:outline-none"
+                className="w-full rounded-xl border border-dark-800 bg-dark-950 px-4 py-2.5 text-xs text-white placeholder-dark-500 focus:border-primary focus:outline-none"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold uppercase text-slate-300 mb-1">
+              <label className="block text-xs font-semibold uppercase text-dark-300 mb-1">
                 Detailed Event Description (Markdown Supported)
               </label>
               <textarea
                 rows={4}
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                className="w-full rounded-xl border border-slate-800 bg-slate-950 p-3 text-xs text-white placeholder-slate-500 focus:border-indigo-500 focus:outline-none"
+                className="w-full rounded-xl border border-dark-800 bg-dark-950 p-3 text-xs text-white placeholder-dark-500 focus:border-primary focus:outline-none"
               />
             </div>
           </div>
@@ -336,24 +336,24 @@ export default function CreateHackathonPage() {
         {/* STEP 2 */}
         {step === 2 && (
           <div className="space-y-6 animate-in fade-in">
-            <h3 className="text-lg font-bold text-white">Tracks & Prize Bounties</h3>
+            <h3 className="text-lg font-bold text-white tracking-tight">Tracks & Prize Bounties</h3>
 
             {/* Tracks */}
             <div>
-              <label className="block text-xs font-semibold uppercase text-slate-300 mb-1.5">
+              <label className="block text-xs font-semibold uppercase text-dark-300 mb-1.5">
                 Competition Tracks ({tracks.length})
               </label>
               <div className="flex flex-wrap gap-2 mb-3">
                 {tracks.map((t) => (
                   <span
                     key={t}
-                    className="flex items-center gap-1.5 rounded-lg border border-indigo-500/30 bg-indigo-500/10 px-3 py-1 text-xs font-medium text-indigo-300"
+                    className="flex items-center gap-1.5 rounded-lg border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-amber-200"
                   >
                     {t}
                     <button
                       type="button"
                       onClick={() => removeTrack(t)}
-                      className="text-indigo-400 hover:text-white"
+                      className="text-primary hover:text-white"
                     >
                       &times;
                     </button>
@@ -366,13 +366,13 @@ export default function CreateHackathonPage() {
                   value={trackInput}
                   onChange={(e) => setTrackInput(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && (e.preventDefault(), addTrack())}
-                  placeholder="New track name (e.g. DeFi & Smart Contracts)..."
-                  className="flex-1 rounded-xl border border-slate-800 bg-slate-950 px-4 py-2 text-xs text-white placeholder-slate-500 focus:border-indigo-500 focus:outline-none"
+                  placeholder="New track name (e.g. Distributed Infrastructure)..."
+                  className="flex-1 rounded-xl border border-dark-800 bg-dark-950 px-4 py-2 text-xs text-white placeholder-dark-500 focus:border-primary focus:outline-none"
                 />
                 <button
                   type="button"
                   onClick={addTrack}
-                  className="rounded-xl bg-slate-800 px-4 py-2 text-xs font-semibold text-slate-200 hover:bg-slate-700"
+                  className="rounded-xl bg-dark-800 border border-dark-700 px-4 py-2 text-xs font-semibold text-dark-200 hover:bg-dark-700 hover:text-white transition-colors"
                 >
                   Add Track
                 </button>
@@ -380,27 +380,27 @@ export default function CreateHackathonPage() {
             </div>
 
             {/* Prizes List */}
-            <div className="border-t border-slate-800 pt-4">
-              <label className="block text-xs font-semibold uppercase text-slate-300 mb-2">
+            <div className="border-t border-dark-800 pt-4">
+              <label className="block text-xs font-semibold uppercase text-dark-300 mb-2">
                 Prize Tiers & Bounties ({prizes.length})
               </label>
               <div className="space-y-2 mb-4">
                 {prizes.map((p) => (
                   <div
                     key={p.id}
-                    className="flex items-center justify-between rounded-xl border border-slate-800 bg-slate-950/60 p-3 text-xs"
+                    className="flex items-center justify-between rounded-xl border border-dark-800 bg-dark-950/60 p-3 text-xs"
                   >
                     <div>
                       <div className="flex items-center gap-2">
                         <span className="font-bold text-white">{p.name}</span>
-                        <span className="font-mono font-bold text-amber-400">{p.amount}</span>
+                        <span className="font-mono font-bold text-primary">{p.amount}</span>
                       </div>
-                      <span className="text-[11px] text-slate-400">{p.description}</span>
+                      <span className="text-[11px] text-dark-400">{p.description}</span>
                     </div>
                     <button
                       type="button"
                       onClick={() => removePrize(p.id)}
-                      className="text-red-400 hover:text-red-300 p-1"
+                      className="text-rose-400 hover:text-rose-300 p-1"
                     >
                       <Trash2 className="h-4 w-4" />
                     </button>
@@ -409,22 +409,22 @@ export default function CreateHackathonPage() {
               </div>
 
               {/* Add prize box */}
-              <div className="rounded-xl border border-slate-800 bg-slate-950/40 p-3.5 space-y-2">
-                <span className="block text-[11px] font-bold text-slate-300">Add Prize Tier</span>
+              <div className="rounded-xl border border-dark-800 bg-dark-950/40 p-3.5 space-y-2">
+                <span className="block text-[11px] font-bold text-dark-300">Add Prize Tier</span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   <input
                     type="text"
                     value={newPrizeName}
                     onChange={(e) => setNewPrizeName(e.target.value)}
-                    placeholder="Prize Title (e.g. Best Multimodal App)"
-                    className="rounded-lg border border-slate-800 bg-slate-900 px-3 py-1.5 text-xs text-white placeholder-slate-500"
+                    placeholder="Prize Title (e.g. Best Autonomous Pipeline)"
+                    className="rounded-lg border border-dark-800 bg-dark-900 px-3 py-1.5 text-xs text-white placeholder-dark-500 focus:border-primary focus:outline-none"
                   />
                   <input
                     type="text"
                     value={newPrizeAmount}
                     onChange={(e) => setNewPrizeAmount(e.target.value)}
                     placeholder="Bounty Amount (e.g. $5,000)"
-                    className="rounded-lg border border-slate-800 bg-slate-900 px-3 py-1.5 text-xs text-white placeholder-slate-500"
+                    className="rounded-lg border border-dark-800 bg-dark-900 px-3 py-1.5 text-xs text-white placeholder-dark-500 focus:border-primary focus:outline-none font-mono"
                   />
                 </div>
                 <input
@@ -432,12 +432,12 @@ export default function CreateHackathonPage() {
                   value={newPrizeDesc}
                   onChange={(e) => setNewPrizeDesc(e.target.value)}
                   placeholder="Short criteria description..."
-                  className="w-full rounded-lg border border-slate-800 bg-slate-900 px-3 py-1.5 text-xs text-white placeholder-slate-500"
+                  className="w-full rounded-lg border border-dark-800 bg-dark-900 px-3 py-1.5 text-xs text-white placeholder-dark-500 focus:border-primary focus:outline-none"
                 />
                 <button
                   type="button"
                   onClick={addPrize}
-                  className="rounded-lg bg-indigo-600 px-4 py-1.5 text-xs font-semibold text-white hover:bg-indigo-500"
+                  className="rounded-lg bg-primary px-4 py-1.5 text-xs font-bold text-dark-950 hover:bg-amber-400 transition-colors shadow-sm"
                 >
                   + Add Prize Bounty
                 </button>
@@ -449,24 +449,24 @@ export default function CreateHackathonPage() {
         {/* STEP 3 */}
         {step === 3 && (
           <div className="space-y-6 animate-in fade-in">
-            <h3 className="text-lg font-bold text-white">Judging Rubric & Submission Requirements</h3>
+            <h3 className="text-lg font-bold text-white tracking-tight">Judging Rubric & Submission Requirements</h3>
 
             {/* Rubric Criteria */}
             <div>
-              <label className="block text-xs font-semibold uppercase text-slate-300 mb-2">
+              <label className="block text-xs font-semibold uppercase text-dark-300 mb-2">
                 Weighted Rubric Criteria
               </label>
               <div className="space-y-2 mb-4">
                 {judgingCriteria.map((c) => (
                   <div
                     key={c.id}
-                    className="flex items-center justify-between rounded-xl border border-slate-800 bg-slate-950/60 p-3 text-xs"
+                    className="flex items-center justify-between rounded-xl border border-dark-800 bg-dark-950/60 p-3 text-xs"
                   >
                     <div>
                       <span className="font-bold text-white">{c.name}</span>
-                      <span className="text-slate-400 ml-2">({c.description})</span>
+                      <span className="text-dark-400 ml-2">({c.description})</span>
                     </div>
-                    <span className="font-mono font-bold text-amber-400">
+                    <span className="font-mono font-bold text-primary">
                       {c.weight}% Weight
                     </span>
                   </div>
@@ -475,34 +475,34 @@ export default function CreateHackathonPage() {
             </div>
 
             {/* Submission Requirements Toggles */}
-            <div className="border-t border-slate-800 pt-4 space-y-3">
-              <label className="block text-xs font-semibold uppercase text-slate-300 mb-1">
+            <div className="border-t border-dark-800 pt-4 space-y-3">
+              <label className="block text-xs font-semibold uppercase text-dark-300 mb-1">
                 Participant Submission Requirements
               </label>
-              <label className="flex items-center gap-2 text-xs text-slate-300 cursor-pointer">
+              <label className="flex items-center gap-2 text-xs text-dark-300 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={requireRepoUrl}
                   onChange={(e) => setRequireRepoUrl(e.target.checked)}
-                  className="accent-indigo-500"
+                  className="accent-primary"
                 />
                 <span>Mandatory Public GitHub / GitLab repository URL</span>
               </label>
-              <label className="flex items-center gap-2 text-xs text-slate-300 cursor-pointer">
+              <label className="flex items-center gap-2 text-xs text-dark-300 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={requireDemoVideo}
                   onChange={(e) => setRequireDemoVideo(e.target.checked)}
-                  className="accent-indigo-500"
+                  className="accent-primary"
                 />
                 <span>Mandatory Video Demo (Loom, YouTube, Vimeo)</span>
               </label>
             </div>
 
             {/* Team Size */}
-            <div className="grid grid-cols-2 gap-4 border-t border-slate-800 pt-4">
+            <div className="grid grid-cols-2 gap-4 border-t border-dark-800 pt-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">
+                <label className="block text-xs font-semibold text-dark-300 mb-1">
                   Min Team Size
                 </label>
                 <input
@@ -511,11 +511,11 @@ export default function CreateHackathonPage() {
                   max="10"
                   value={minTeamSize}
                   onChange={(e) => setMinTeamSize(parseInt(e.target.value))}
-                  className="w-full rounded-xl border border-slate-800 bg-slate-950 px-3 py-2 text-xs text-white"
+                  className="w-full rounded-xl border border-dark-800 bg-dark-950 px-3 py-2 text-xs text-white font-mono"
                 />
               </div>
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">
+                <label className="block text-xs font-semibold text-dark-300 mb-1">
                   Max Team Size
                 </label>
                 <input
@@ -524,7 +524,7 @@ export default function CreateHackathonPage() {
                   max="10"
                   value={maxTeamSize}
                   onChange={(e) => setMaxTeamSize(parseInt(e.target.value))}
-                  className="w-full rounded-xl border border-slate-800 bg-slate-950 px-3 py-2 text-xs text-white"
+                  className="w-full rounded-xl border border-dark-800 bg-dark-950 px-3 py-2 text-xs text-white font-mono"
                 />
               </div>
             </div>
@@ -532,12 +532,12 @@ export default function CreateHackathonPage() {
         )}
 
         {/* Wizard Navigation */}
-        <div className="flex items-center justify-between border-t border-slate-800 pt-6">
+        <div className="flex items-center justify-between border-t border-dark-800 pt-6">
           {step > 1 ? (
             <button
               type="button"
               onClick={() => setStep(step - 1)}
-              className="flex items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900 px-4 py-2 text-xs font-semibold text-slate-300 hover:text-white"
+              className="flex items-center gap-1.5 rounded-xl border border-dark-800 bg-dark-900 px-4 py-2 text-xs font-semibold text-dark-300 hover:text-white transition-colors"
             >
               <ArrowLeft className="h-4 w-4" /> Previous
             </button>
@@ -550,7 +550,7 @@ export default function CreateHackathonPage() {
               type="button"
               disabled={step === 1 && (!title.trim() || !tagline.trim())}
               onClick={() => setStep(step + 1)}
-              className="flex items-center gap-1.5 rounded-xl bg-indigo-600 px-6 py-2.5 text-xs font-bold text-white hover:bg-indigo-500 disabled:opacity-40"
+              className="flex items-center gap-1.5 rounded-xl bg-primary px-6 py-2.5 text-xs font-bold text-dark-950 hover:bg-amber-400 disabled:opacity-40 shadow-md transition-all"
             >
               Continue <ArrowRight className="h-4 w-4" />
             </button>
@@ -559,7 +559,7 @@ export default function CreateHackathonPage() {
               type="button"
               disabled={isPublishing || !title.trim()}
               onClick={handlePublish}
-              className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 via-primary to-accent px-7 py-3 text-xs font-black uppercase tracking-wider text-white shadow-lg hover:scale-105 active:scale-95 disabled:opacity-40"
+              className="flex items-center gap-2 rounded-xl bg-primary px-7 py-3 text-xs font-bold uppercase tracking-wider text-dark-950 shadow-lg hover:bg-amber-400 hover:scale-105 active:scale-95 disabled:opacity-40 transition-all"
             >
               <Sparkles className="h-4 w-4" />
               <span>{isPublishing ? "Publishing..." : "Launch & Publish Hackathon"}</span>

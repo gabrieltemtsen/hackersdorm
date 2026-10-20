@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className="min-h-screen flex flex-col bg-dark-950 text-slate-100 font-sans selection:bg-indigo-500 selection:text-white">
+      <body className="min-h-screen flex flex-col bg-dark-950 text-dark-100 font-sans selection:bg-primary selection:text-dark-950 antialiased">
         <ConvexClientProvider>
           <HackersDormProvider>
             <AnnouncementsBanner />

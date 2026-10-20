@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Search, SlidersHorizontal, Flame, Sparkles } from "lucide-react";
+import { Search } from "lucide-react";
 
 interface HackathonFiltersProps {
   searchQuery: string;
@@ -24,7 +24,7 @@ export function HackathonFilters({
 }: HackathonFiltersProps) {
   const statusTabs = [
     { id: "all", label: "All Hackathons" },
-    { id: "hacking", label: "🔥 Live Hacking" },
+    { id: "hacking", label: "⚡ Live Hacking" },
     { id: "registering", label: "Registration Open" },
     { id: "judging", label: "In Judging" },
     { id: "ended", label: "Completed" },
@@ -41,7 +41,7 @@ export function HackathonFilters({
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search by hackathon name, tech stack, or topic..."
-            className="w-full rounded-xl border border-slate-800 bg-slate-900/90 pl-10 pr-4 py-3 text-sm text-white placeholder-slate-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="w-full rounded-xl border border-dark-700 bg-dark-900 pl-10 pr-4 py-3 text-sm text-white placeholder-slate-500 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
           />
         </div>
 
@@ -50,7 +50,7 @@ export function HackathonFilters({
           <select
             value={selectedTrack}
             onChange={(e) => setSelectedTrack(e.target.value)}
-            className="w-full rounded-xl border border-slate-800 bg-slate-900/90 px-4 py-3 text-sm text-slate-300 focus:border-indigo-500 focus:outline-none"
+            className="w-full rounded-xl border border-dark-700 bg-dark-900 px-4 py-3 text-sm text-slate-300 focus:border-primary focus:outline-none"
           >
             <option value="all">All Tracks & Categories</option>
             {availableTracks.map((t) => (
@@ -72,8 +72,8 @@ export function HackathonFilters({
               onClick={() => setActiveStatus(tab.id)}
               className={`rounded-xl px-4 py-2 text-xs font-semibold whitespace-nowrap transition-all ${
                 isActive
-                  ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/20"
-                  : "border border-slate-800 bg-slate-900/60 text-slate-400 hover:border-slate-700 hover:text-white"
+                  ? "bg-primary text-dark-950 font-bold shadow-md"
+                  : "border border-dark-750 bg-dark-900/80 text-slate-400 hover:border-dark-700 hover:text-white"
               }`}
             >
               {tab.label}

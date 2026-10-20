@@ -95,10 +95,10 @@ export function JudgingDashboard({ hackathon }: { hackathon: Hackathon }) {
       {/* Left Column: Submissions Queue */}
       <div className="lg:col-span-4 space-y-3">
         <div className="flex items-center justify-between px-1">
-          <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
+          <span className="text-xs font-bold uppercase tracking-wider text-dark-400">
             Judging Queue ({hackathonSubmissions.length})
           </span>
-          <span className="text-[11px] font-semibold text-indigo-400">
+          <span className="text-[11px] font-semibold text-primary">
             Official Rubric
           </span>
         </div>
@@ -119,25 +119,25 @@ export function JudgingDashboard({ hackathon }: { hackathon: Hackathon }) {
                 }}
                 className={`w-full text-left rounded-xl p-3.5 border transition-all ${
                   isSelected
-                    ? "border-amber-500/60 bg-amber-500/10 text-white shadow-md"
-                    : "border-slate-800 bg-slate-900/60 text-slate-300 hover:border-slate-700 hover:bg-slate-900"
+                    ? "border-primary/60 bg-primary/10 text-white shadow-md"
+                    : "border-dark-750 bg-dark-900/60 text-dark-300 hover:border-dark-700 hover:bg-dark-900"
                 }`}
               >
                 <div className="flex items-center justify-between gap-2 mb-1">
                   <span className="font-bold text-xs truncate text-white">{sub.title}</span>
                   {scored && (
-                    <span className="flex items-center gap-1 rounded bg-emerald-500/20 px-1.5 py-0.5 text-[10px] font-bold text-emerald-400 shrink-0">
+                    <span className="flex items-center gap-1 rounded bg-secondary/20 px-1.5 py-0.5 text-[10px] font-bold text-secondary shrink-0">
                       <CheckCircle2 className="h-3 w-3" /> Scored
                     </span>
                   )}
                 </div>
-                <div className="text-[11px] text-slate-400 line-clamp-1 mb-2">
+                <div className="text-[11px] text-dark-300 line-clamp-1 mb-2">
                   {sub.tagline}
                 </div>
-                <div className="flex items-center justify-between text-[10px] text-slate-500">
-                  <span className="text-indigo-400 font-medium">{sub.track}</span>
+                <div className="flex items-center justify-between text-[10px] text-dark-400">
+                  <span className="text-primary font-medium">{sub.track}</span>
                   {sub.averageScore && (
-                    <span className="text-amber-400 font-bold">
+                    <span className="text-primary font-bold font-mono">
                       Avg: {sub.averageScore} / 10
                     </span>
                   )}
@@ -151,11 +151,11 @@ export function JudgingDashboard({ hackathon }: { hackathon: Hackathon }) {
       {/* Right Column: Scoring Form & Project Brief */}
       <div className="lg:col-span-8 space-y-6">
         {selectedSub && (
-          <div className="glass-card rounded-2xl border-slate-800 p-6 sm:p-8 space-y-6">
+          <div className="glass-card rounded-2xl border-dark-800/80 p-6 sm:p-8 space-y-6 shadow-xl backdrop-blur-sm">
             {/* Project Header */}
-            <div className="border-b border-slate-800 pb-5">
+            <div className="border-b border-dark-800 pb-5">
               <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-                <span className="rounded-lg bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-0.5 text-xs font-semibold text-indigo-400">
+                <span className="rounded-lg bg-primary/10 border border-primary/20 px-2.5 py-0.5 text-xs font-semibold text-primary">
                   {selectedSub.track}
                 </span>
                 <div className="flex items-center gap-2">
@@ -201,15 +201,15 @@ export function JudgingDashboard({ hackathon }: { hackathon: Hackathon }) {
             {/* Rubric Criteria Sliders */}
             <div className="space-y-5">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
+                <span className="text-xs font-bold uppercase tracking-wider text-primary flex items-center gap-1.5">
                   <Sliders className="h-4 w-4" /> Weighted Rubric Evaluation
                 </span>
-                <div className="rounded-xl border border-amber-500/40 bg-amber-500/10 px-3 py-1 text-amber-400 text-xs font-bold">
+                <div className="rounded-xl border border-primary/40 bg-primary/10 px-3 py-1 text-primary text-xs font-bold font-tabular">
                   Calculated Score: {calculateTotalWeighted()} / 10
                 </div>
               </div>
 
-              <div className="space-y-4 rounded-xl border border-slate-800 bg-slate-950/60 p-5">
+              <div className="space-y-4 rounded-xl border border-dark-750 bg-dark-950/60 p-5">
                 {hackathon.judgingCriteria.map((crit) => {
                   const currentVal = scores[crit.id] ?? 8;
                   return (
@@ -219,7 +219,7 @@ export function JudgingDashboard({ hackathon }: { hackathon: Hackathon }) {
                           {crit.name}{" "}
                           <span className="text-slate-500 font-normal">({crit.weight}%)</span>
                         </span>
-                        <span className="font-mono font-bold text-indigo-400">
+                        <span className="font-mono font-bold text-primary font-tabular">
                           {currentVal} / {crit.maxScore}
                         </span>
                       </div>
@@ -231,7 +231,7 @@ export function JudgingDashboard({ hackathon }: { hackathon: Hackathon }) {
                         step="1"
                         value={currentVal}
                         onChange={(e) => handleScoreChange(crit.id, parseInt(e.target.value))}
-                        className="w-full accent-indigo-500 cursor-pointer"
+                        className="w-full accent-primary cursor-pointer"
                       />
                     </div>
                   );
@@ -280,9 +280,9 @@ export function JudgingDashboard({ hackathon }: { hackathon: Hackathon }) {
 
               <button
                 onClick={handleSaveScore}
-                className="flex items-center gap-2 rounded-xl bg-amber-500 px-6 py-2.5 text-xs font-bold text-black transition-transform hover:scale-105 active:scale-95 shadow-md"
+                className="flex items-center gap-2 rounded-xl bg-primary px-6 py-2.5 text-xs font-bold text-dark-950 transition-all hover:bg-amber-400 active:scale-95 shadow-md"
               >
-                <Star className="h-4 w-4 fill-black" />
+                <Star className="h-4 w-4 fill-dark-950" />
                 <span>Save Rubric Score</span>
               </button>
             </div>

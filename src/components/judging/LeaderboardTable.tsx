@@ -43,7 +43,7 @@ export function LeaderboardTable({ hackathon }: { hackathon: Hackathon }) {
         );
       default:
         return (
-          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-slate-800 text-slate-400 font-mono text-xs">
+          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-dark-900 border border-dark-800 text-dark-300 font-mono text-xs font-semibold">
             #{index + 1}
           </span>
         );
@@ -56,10 +56,10 @@ export function LeaderboardTable({ hackathon }: { hackathon: Hackathon }) {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
           <h3 className="text-lg font-bold text-white flex items-center gap-2">
-            <Trophy className="h-5 w-5 text-amber-400" />
+            <Trophy className="h-5 w-5 text-primary" />
             Hackathon Leaderboard
           </h3>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-dark-300">
             Calculated from verified judge weighted scores and community recognition.
           </p>
         </div>
@@ -67,7 +67,7 @@ export function LeaderboardTable({ hackathon }: { hackathon: Hackathon }) {
         <select
           value={selectedTrack}
           onChange={(e) => setSelectedTrack(e.target.value)}
-          className="rounded-xl border border-slate-800 bg-slate-900 px-3 py-1.5 text-xs text-slate-300 focus:outline-none"
+          className="rounded-xl border border-dark-800 bg-dark-900 px-3 py-1.5 text-xs text-dark-200 focus:outline-none focus:border-primary/50"
         >
           <option value="all">All Tracks</option>
           {hackathon.tracks.map((t) => (
@@ -79,13 +79,13 @@ export function LeaderboardTable({ hackathon }: { hackathon: Hackathon }) {
       </div>
 
       {filtered.length === 0 ? (
-        <div className="rounded-xl border border-slate-800 bg-slate-900/40 p-8 text-center text-xs text-slate-400">
+        <div className="rounded-xl border border-dark-800/80 bg-dark-900/40 p-8 text-center text-xs text-dark-400">
           No projects in this track yet.
         </div>
       ) : (
-        <div className="overflow-x-auto rounded-2xl border border-slate-800 bg-slate-900/40">
+        <div className="overflow-x-auto rounded-2xl border border-dark-800/80 bg-dark-900/40 shadow-xl backdrop-blur-sm">
           <table className="w-full text-left text-xs">
-            <thead className="border-b border-slate-800 bg-slate-950/70 text-slate-400 uppercase tracking-wider font-semibold">
+            <thead className="border-b border-dark-800 bg-dark-950/80 text-dark-300 uppercase tracking-wider font-semibold text-[11px]">
               <tr>
                 <th className="py-3.5 pl-4 pr-2">Rank</th>
                 <th className="py-3.5 px-4">Project</th>
@@ -95,43 +95,43 @@ export function LeaderboardTable({ hackathon }: { hackathon: Hackathon }) {
                 <th className="py-3.5 pr-4 text-right">Award</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60">
+            <tbody className="divide-y divide-dark-800/60 font-sans">
               {filtered.map((sub, idx) => (
-                <tr key={sub.id} className="hover:bg-slate-800/30 transition-colors">
+                <tr key={sub.id} className="hover:bg-dark-850/50 transition-colors">
                   <td className="py-4 pl-4 pr-2">{getRankBadge(idx)}</td>
                   <td className="py-4 px-4">
-                    <div className="font-bold text-white text-sm">{sub.title}</div>
-                    <div className="text-[11px] text-slate-400 line-clamp-1 max-w-md">
+                    <div className="font-bold text-white text-sm tracking-tight">{sub.title}</div>
+                    <div className="text-[11px] text-dark-300 line-clamp-1 max-w-md">
                       {sub.tagline}
                     </div>
                   </td>
                   <td className="py-4 px-4">
-                    <span className="rounded bg-indigo-500/10 border border-indigo-500/20 px-2 py-0.5 text-[11px] font-semibold text-indigo-300">
+                    <span className="rounded-md bg-dark-800/80 border border-dark-700/80 px-2 py-0.5 text-[11px] font-medium text-dark-200">
                       {sub.track}
                     </span>
                   </td>
                   <td className="py-4 px-4 text-center">
                     {sub.averageScore ? (
-                      <span className="font-mono text-sm font-bold text-amber-400">
+                      <span className="font-mono text-sm font-bold text-primary tabular-nums">
                         {sub.averageScore.toFixed(1)} / 10
                       </span>
                     ) : (
-                      <span className="text-slate-500 italic">Pending</span>
+                      <span className="text-dark-500 italic">Pending</span>
                     )}
                   </td>
                   <td className="py-4 px-4 text-center">
-                    <span className="inline-flex items-center gap-1 font-bold text-pink-400">
-                      <Heart className="h-3.5 w-3.5 fill-pink-500" />
+                    <span className="inline-flex items-center gap-1 font-bold text-rose-400/90 font-mono text-xs">
+                      <Heart className="h-3.5 w-3.5 fill-rose-500" />
                       {sub.votesCount}
                     </span>
                   </td>
                   <td className="py-4 pr-4 text-right">
                     {sub.prizeAwarded ? (
-                      <span className="inline-flex items-center gap-1 rounded-full bg-amber-500/10 border border-amber-500/30 px-2.5 py-1 text-[11px] font-bold text-amber-400">
+                      <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 border border-primary/30 px-2.5 py-1 text-[11px] font-bold text-primary">
                         <Award className="h-3 w-3" /> {sub.prizeAwarded}
                       </span>
                     ) : (
-                      <span className="text-slate-600">&mdash;</span>
+                      <span className="text-dark-600">&mdash;</span>
                     )}
                   </td>
                 </tr>

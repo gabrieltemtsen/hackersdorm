@@ -61,11 +61,11 @@ export function UserProfileModal({ onClose }: { onClose: () => void }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm animate-in fade-in">
-      <div className="relative flex max-h-[85vh] w-full max-w-2xl flex-col rounded-2xl border border-slate-800 bg-slate-900 shadow-2xl overflow-hidden">
+      <div className="relative flex max-h-[85vh] w-full max-w-2xl flex-col rounded-2xl border border-dark-800 bg-dark-900 shadow-2xl overflow-hidden">
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-slate-800 bg-slate-950 px-6 py-4">
+        <div className="flex items-center justify-between border-b border-dark-800 bg-dark-950 px-6 py-4">
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-xl bg-gradient-to-tr from-indigo-500 to-pink-500 p-[1.5px]">
+            <div className="h-10 w-10 rounded-xl bg-gradient-to-tr from-primary to-amber-600 p-[1.5px]">
               <img
                 src={currentUser.avatarUrl || "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80"}
                 alt={currentUser.name}
@@ -73,20 +73,20 @@ export function UserProfileModal({ onClose }: { onClose: () => void }) {
               />
             </div>
             <div>
-              <h3 className="text-base font-bold text-white">{name}</h3>
-              <p className="text-xs text-slate-400">{email}</p>
+              <h3 className="text-base font-bold text-white tracking-tight">{name}</h3>
+              <p className="text-xs text-dark-300">{email}</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="rounded-lg p-2 text-slate-400 hover:bg-slate-800 hover:text-white"
+            className="rounded-lg p-2 text-dark-400 hover:bg-dark-800 hover:text-white transition-colors"
           >
             <X className="h-5 w-5" />
           </button>
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex items-center gap-2 border-b border-slate-800 bg-slate-950/60 px-6 pt-2">
+        <div className="flex items-center gap-2 border-b border-dark-800 bg-dark-950/60 px-6 pt-2">
           {[
             { id: "profile", label: "Profile Settings", icon: User },
             { id: "submissions", label: `My Projects (${userSubmissions.length})`, icon: Code2 },
@@ -100,8 +100,8 @@ export function UserProfileModal({ onClose }: { onClose: () => void }) {
                 onClick={() => setActiveTab(tab.id as any)}
                 className={`flex items-center gap-2 border-b-2 px-3 py-2.5 text-xs font-semibold transition-all ${
                   isActive
-                    ? "border-indigo-500 text-indigo-400"
-                    : "border-transparent text-slate-400 hover:text-slate-200"
+                    ? "border-primary text-primary"
+                    : "border-transparent text-dark-400 hover:text-dark-200"
                 }`}
               >
                 <Icon className="h-3.5 w-3.5" />
@@ -117,68 +117,68 @@ export function UserProfileModal({ onClose }: { onClose: () => void }) {
             <form onSubmit={handleSave} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold uppercase text-slate-300 mb-1">
+                  <label className="block text-xs font-semibold uppercase text-dark-300 mb-1">
                     Full Name
                   </label>
                   <input
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full rounded-xl border border-slate-800 bg-slate-950 px-3.5 py-2.5 text-xs text-white focus:border-indigo-500 focus:outline-none"
+                    className="w-full rounded-xl border border-dark-800 bg-dark-950 px-3.5 py-2.5 text-xs text-white focus:border-primary focus:outline-none"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold uppercase text-slate-300 mb-1">
+                  <label className="block text-xs font-semibold uppercase text-dark-300 mb-1">
                     Email Address
                   </label>
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full rounded-xl border border-slate-800 bg-slate-950 px-3.5 py-2.5 text-xs text-white focus:border-indigo-500 focus:outline-none"
+                    className="w-full rounded-xl border border-dark-800 bg-dark-950 px-3.5 py-2.5 text-xs text-white focus:border-primary focus:outline-none"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold uppercase text-slate-300 mb-1">
+                <label className="block text-xs font-semibold uppercase text-dark-300 mb-1">
                   Bio / Headline
                 </label>
                 <textarea
                   rows={2}
                   value={bio}
                   onChange={(e) => setBio(e.target.value)}
-                  className="w-full rounded-xl border border-slate-800 bg-slate-950 p-3 text-xs text-white focus:border-indigo-500 focus:outline-none"
+                  className="w-full rounded-xl border border-dark-800 bg-dark-950 p-3 text-xs text-white focus:border-primary focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold uppercase text-slate-300 mb-1">
+                <label className="block text-xs font-semibold uppercase text-dark-300 mb-1">
                   GitHub Profile URL
                 </label>
                 <input
                   type="url"
                   value={githubUrl}
                   onChange={(e) => setGithubUrl(e.target.value)}
-                  className="w-full rounded-xl border border-slate-800 bg-slate-950 px-3.5 py-2.5 text-xs text-white focus:border-indigo-500 focus:outline-none"
+                  className="w-full rounded-xl border border-dark-800 bg-dark-950 px-3.5 py-2.5 text-xs text-white focus:border-primary focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold uppercase text-slate-300 mb-1">
+                <label className="block text-xs font-semibold uppercase text-dark-300 mb-1">
                   Technical Skills & Domains
                 </label>
                 <div className="flex flex-wrap gap-1.5 mb-2">
                   {skills.map((s) => (
                     <span
                       key={s}
-                      className="rounded-md border border-slate-800 bg-slate-950 px-2.5 py-1 text-xs text-slate-300 flex items-center gap-1.5"
+                      className="rounded-md border border-primary/20 bg-primary/10 px-2.5 py-1 text-xs text-amber-200 flex items-center gap-1.5"
                     >
                       {s}
                       <button
                         type="button"
                         onClick={() => removeSkill(s)}
-                        className="text-slate-500 hover:text-red-400"
+                        className="text-primary hover:text-white"
                       >
                         &times;
                       </button>
@@ -192,19 +192,19 @@ export function UserProfileModal({ onClose }: { onClose: () => void }) {
                     onChange={(e) => setSkillInput(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && (e.preventDefault(), addSkill())}
                     placeholder="Add skill (e.g. PyTorch, Rust, Solidity)..."
-                    className="flex-1 rounded-xl border border-slate-800 bg-slate-950 px-3 py-1.5 text-xs text-white placeholder-slate-500"
+                    className="flex-1 rounded-xl border border-dark-800 bg-dark-950 px-3 py-1.5 text-xs text-white placeholder-dark-500 focus:border-primary focus:outline-none"
                   />
                   <button
                     type="button"
                     onClick={addSkill}
-                    className="rounded-xl bg-slate-800 px-3.5 py-1.5 text-xs font-semibold text-slate-300 hover:bg-slate-700"
+                    className="rounded-xl bg-dark-800 border border-dark-700 px-3.5 py-1.5 text-xs font-semibold text-dark-200 hover:text-white transition-colors"
                   >
                     Add
                   </button>
                 </div>
               </div>
 
-              <div className="flex items-center justify-between pt-4 border-t border-slate-800">
+              <div className="flex items-center justify-between pt-4 border-t border-dark-800">
                 {savedSuccess ? (
                   <span className="flex items-center gap-1.5 text-xs font-semibold text-emerald-400">
                     <Check className="h-4 w-4" /> Profile changes saved!
@@ -215,7 +215,7 @@ export function UserProfileModal({ onClose }: { onClose: () => void }) {
 
                 <button
                   type="submit"
-                  className="flex items-center gap-1.5 rounded-xl bg-indigo-600 px-5 py-2 text-xs font-bold text-white hover:bg-indigo-500"
+                  className="flex items-center gap-1.5 rounded-xl bg-primary px-5 py-2 text-xs font-bold text-dark-950 hover:bg-amber-400 transition-colors shadow-sm"
                 >
                   <Save className="h-3.5 w-3.5" />
                   <span>Save Changes</span>
@@ -227,28 +227,28 @@ export function UserProfileModal({ onClose }: { onClose: () => void }) {
           {activeTab === "submissions" && (
             <div className="space-y-3">
               {userSubmissions.length === 0 ? (
-                <div className="p-8 text-center text-slate-500 text-xs">
+                <div className="p-8 text-center text-dark-400 text-xs">
                   You haven&apos;t submitted any projects yet.
                 </div>
               ) : (
                 userSubmissions.map((sub) => (
                   <div
                     key={sub.id}
-                    className="rounded-xl border border-slate-800 bg-slate-950/60 p-4"
+                    className="rounded-xl border border-dark-800 bg-dark-950/60 p-4"
                   >
                     <div className="flex items-center justify-between mb-1">
-                      <h4 className="text-sm font-bold text-white">{sub.title}</h4>
-                      <span className="rounded bg-indigo-500/10 border border-indigo-500/20 px-2 py-0.5 text-[10px] font-semibold text-indigo-400">
+                      <h4 className="text-sm font-bold text-white tracking-tight">{sub.title}</h4>
+                      <span className="rounded bg-primary/10 border border-primary/20 px-2 py-0.5 text-[10px] font-semibold text-primary">
                         {sub.track}
                       </span>
                     </div>
-                    <p className="text-xs text-slate-400 line-clamp-1 mb-3">{sub.tagline}</p>
-                    <div className="flex items-center justify-between text-xs text-slate-500">
+                    <p className="text-xs text-dark-300 line-clamp-1 mb-3">{sub.tagline}</p>
+                    <div className="flex items-center justify-between text-xs text-dark-400 font-mono">
                       <span>Submitted on {new Date(sub.submittedAt).toLocaleDateString()}</span>
                       {sub.prizeAwarded ? (
-                        <span className="text-amber-400 font-bold">🏆 {sub.prizeAwarded}</span>
+                        <span className="text-primary font-bold">🏆 {sub.prizeAwarded}</span>
                       ) : (
-                        <span className="text-emerald-400">Under Review</span>
+                        <span className="text-secondary">Under Review</span>
                       )}
                     </div>
                   </div>
@@ -262,13 +262,13 @@ export function UserProfileModal({ onClose }: { onClose: () => void }) {
               {hackathons.slice(0, 2).map((h) => (
                 <div
                   key={h.id}
-                  className="flex items-center justify-between rounded-xl border border-slate-800 bg-slate-950/60 p-4"
+                  className="flex items-center justify-between rounded-xl border border-dark-800 bg-dark-950/60 p-4"
                 >
                   <div>
-                    <h4 className="text-sm font-bold text-white">{h.title}</h4>
-                    <p className="text-xs text-slate-400">{h.totalPrizePool} Prize Pool &bull; {h.format}</p>
+                    <h4 className="text-sm font-bold text-white tracking-tight">{h.title}</h4>
+                    <p className="text-xs text-dark-300">{h.totalPrizePool} Prize Pool &bull; {h.format}</p>
                   </div>
-                  <span className="rounded-full bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 text-xs font-semibold text-emerald-400">
+                  <span className="rounded-full bg-secondary/10 border border-secondary/20 px-3 py-1 text-xs font-semibold text-secondary">
                     Confirmed Hacker
                   </span>
                 </div>

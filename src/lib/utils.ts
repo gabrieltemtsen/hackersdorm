@@ -48,18 +48,18 @@ export function formatDateTime(dateString: string): string {
 export function getStatusBadge(status: string) {
   switch (status) {
     case 'hacking':
-      return { label: 'Hacking Live', color: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30' };
+      return { label: 'Hacking Live', color: 'bg-emerald-950/40 text-emerald-300 border-emerald-500/30' };
     case 'registering':
-      return { label: 'Registration Open', color: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/30' };
+      return { label: 'Registration Open', color: 'bg-primary/10 text-primary border-primary/30' };
     case 'upcoming':
-      return { label: 'Upcoming', color: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/30' };
+      return { label: 'Upcoming', color: 'bg-dark-800 text-slate-300 border-dark-700' };
     case 'submission_closed':
     case 'judging':
-      return { label: 'Judging In Progress', color: 'bg-amber-500/10 text-amber-400 border-amber-500/30' };
+      return { label: 'Judging In Progress', color: 'bg-amber-950/40 text-amber-300 border-amber-500/30' };
     case 'ended':
-      return { label: 'Completed', color: 'bg-slate-500/10 text-slate-400 border-slate-500/30' };
+      return { label: 'Completed', color: 'bg-dark-850 text-slate-400 border-dark-750' };
     default:
-      return { label: status, color: 'bg-slate-800 text-slate-300 border-slate-700' };
+      return { label: status, color: 'bg-dark-800 text-slate-300 border-dark-700' };
   }
 }
 

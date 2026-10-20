@@ -41,17 +41,17 @@ export default function HackathonsDirectoryPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       {/* Page Title & Action */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-800 pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-dark-800 pb-6">
         <div>
-          <h1 className="text-3xl font-black text-white">Explore Hackathons</h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+          <h1 className="text-3xl font-extrabold text-white tracking-tight">Explore Hackathons</h1>
+          <p className="text-xs sm:text-sm text-dark-300 mt-1">
             Discover global online and in-person hackathons, join squads, and submit your projects.
           </p>
         </div>
 
         <Link
           href="/create"
-          className="flex items-center gap-2 rounded-xl bg-indigo-600 px-5 py-2.5 text-xs font-bold text-white transition-colors hover:bg-indigo-500 shrink-0"
+          className="flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-xs font-bold text-dark-950 transition-all hover:bg-amber-400 shrink-0 shadow-md"
         >
           <PlusCircle className="h-4 w-4" />
           <span>Host a Hackathon</span>
@@ -71,10 +71,10 @@ export default function HackathonsDirectoryPage() {
 
       {/* Grid of Results */}
       {filteredHackathons.length === 0 ? (
-        <div className="rounded-2xl border border-slate-800 bg-slate-900/40 p-12 text-center text-slate-400">
-          <Trophy className="mx-auto h-12 w-12 text-slate-600 mb-3" />
+        <div className="rounded-2xl border border-dark-800 bg-dark-900/40 p-12 text-center text-dark-400">
+          <Trophy className="mx-auto h-12 w-12 text-dark-600 mb-3" />
           <h3 className="text-base font-bold text-white">No hackathons matched your filters</h3>
-          <p className="text-xs text-slate-500 mt-1">
+          <p className="text-xs text-dark-500 mt-1">
             Try resetting your search query or switching to &ldquo;All Hackathons&rdquo;.
           </p>
         </div>

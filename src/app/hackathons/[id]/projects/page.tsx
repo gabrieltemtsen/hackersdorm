@@ -19,10 +19,10 @@ export default function HackathonProjectsGalleryPage() {
   if (!hackathon) {
     return (
       <div className="mx-auto max-w-7xl px-4 py-20 text-center">
-        <h2 className="text-2xl font-bold text-white">Hackathon Not Found</h2>
+        <h2 className="text-2xl font-bold text-white tracking-tight">Hackathon Not Found</h2>
         <Link
           href="/hackathons"
-          className="mt-4 inline-block rounded-xl bg-indigo-600 px-6 py-2.5 text-xs font-bold text-white"
+          className="mt-4 inline-block rounded-xl bg-primary px-6 py-2.5 text-xs font-bold text-dark-950 hover:bg-amber-400 transition-all shadow-md"
         >
           Return to Hackathons Directory
         </Link>
@@ -46,24 +46,24 @@ export default function HackathonProjectsGalleryPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       {/* Header & Breadcrumb */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-800 pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-dark-800 pb-6">
         <div>
           <Link
             href={`/hackathons/${hackathon.slug}`}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-white transition-colors mb-2"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-dark-400 hover:text-white transition-colors mb-2"
           >
             <ArrowLeft className="h-4 w-4" />
             <span>Back to {hackathon.title}</span>
           </Link>
-          <h1 className="text-3xl font-black text-white">Project Showcase Gallery</h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+          <h1 className="text-3xl font-extrabold text-white tracking-tight">Project Showcase Gallery</h1>
+          <p className="text-xs sm:text-sm text-dark-300 mt-1">
             Browse, explore, and upvote innovative projects built during {hackathon.title}.
           </p>
         </div>
 
         <Link
           href={`/hackathons/${hackathon.slug}/submit`}
-          className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-500 px-5 py-2.5 text-xs font-bold text-white shadow-md hover:scale-105 transition-all shrink-0"
+          className="flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-xs font-bold text-dark-950 shadow-md hover:bg-amber-400 transition-all shrink-0"
         >
           <Send className="h-4 w-4" />
           <span>Submit Project</span>
@@ -73,20 +73,20 @@ export default function HackathonProjectsGalleryPage() {
       {/* Search and Filters */}
       <div className="flex flex-col sm:flex-row gap-3">
         <div className="relative flex-1">
-          <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+          <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-dark-400" />
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search projects by title, tagline, or tech stack..."
-            className="w-full rounded-xl border border-slate-800 bg-slate-900/90 pl-10 pr-4 py-2.5 text-xs text-white placeholder-slate-500 focus:border-indigo-500 focus:outline-none"
+            className="w-full rounded-xl border border-dark-800 bg-dark-900/90 pl-10 pr-4 py-2.5 text-xs text-white placeholder-dark-500 focus:border-primary focus:outline-none"
           />
         </div>
 
         <select
           value={selectedTrack}
           onChange={(e) => setSelectedTrack(e.target.value)}
-          className="rounded-xl border border-slate-800 bg-slate-900/90 px-4 py-2.5 text-xs text-slate-300 focus:border-indigo-500 focus:outline-none"
+          className="rounded-xl border border-dark-800 bg-dark-900/90 px-4 py-2.5 text-xs text-dark-300 focus:border-primary focus:outline-none"
         >
           <option value="all">All Tracks ({hackathonSubmissions.length})</option>
           {hackathon.tracks.map((t) => (
@@ -99,10 +99,10 @@ export default function HackathonProjectsGalleryPage() {
 
       {/* Projects Grid */}
       {filtered.length === 0 ? (
-        <div className="rounded-2xl border border-slate-800 bg-slate-900/40 p-12 text-center text-slate-400">
-          <Code2 className="mx-auto h-12 w-12 text-slate-600 mb-3" />
+        <div className="rounded-2xl border border-dark-800 bg-dark-900/40 p-12 text-center text-dark-400">
+          <Code2 className="mx-auto h-12 w-12 text-dark-600 mb-3" />
           <h3 className="text-base font-bold text-white">No projects found matching query</h3>
-          <p className="text-xs text-slate-500 mt-1">
+          <p className="text-xs text-dark-500 mt-1">
             Try adjusting your search keywords or track filter.
           </p>
         </div>

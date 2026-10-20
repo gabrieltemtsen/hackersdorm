@@ -60,32 +60,32 @@ export function SubmissionDetailModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 backdrop-blur-md animate-in fade-in">
-      <div className="relative flex max-h-[90vh] w-full max-w-4xl flex-col rounded-2xl border border-slate-800 bg-slate-900 shadow-2xl overflow-hidden">
+      <div className="relative flex max-h-[90vh] w-full max-w-4xl flex-col rounded-2xl border border-dark-750 bg-dark-900 shadow-2xl overflow-hidden">
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-slate-800 bg-slate-950 px-6 py-4">
+        <div className="flex items-center justify-between border-b border-dark-750 bg-dark-950 px-6 py-4">
           <div className="flex items-center gap-3">
-            <span className="rounded-lg bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-1 text-xs font-semibold text-indigo-400">
+            <span className="rounded-lg bg-primary/10 border border-primary/25 px-2.5 py-1 text-xs font-semibold text-primary">
               {submission.track}
             </span>
             {submission.prizeAwarded && (
-              <span className="flex items-center gap-1 rounded-full bg-amber-500/10 border border-amber-500/30 px-3 py-0.5 text-xs font-bold text-amber-400">
+              <span className="flex items-center gap-1 rounded-full bg-amber-500/15 border border-amber-500/30 px-3 py-0.5 text-xs font-bold text-amber-300">
                 <Award className="h-3.5 w-3.5" /> {submission.prizeAwarded}
               </span>
             )}
           </div>
           <button
             onClick={onClose}
-            className="rounded-lg p-2 text-slate-400 hover:bg-slate-800 hover:text-white"
+            className="rounded-lg p-2 text-slate-400 hover:bg-dark-800 hover:text-white"
           >
             <X className="h-5 w-5" />
           </button>
         </div>
 
         {/* Hero title bar */}
-        <div className="border-b border-slate-800 bg-slate-950/40 px-6 py-5">
+        <div className="border-b border-dark-750 bg-dark-950/40 px-6 py-5">
           <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
             <div>
-              <h2 className="text-2xl font-black text-white">{submission.title}</h2>
+              <h2 className="text-2xl font-black text-white font-heading">{submission.title}</h2>
               <p className="mt-1 text-sm text-slate-300 leading-relaxed">
                 {submission.tagline}
               </p>
@@ -96,18 +96,18 @@ export function SubmissionDetailModal({
                 onClick={handleVote}
                 className={`flex items-center gap-2 rounded-xl border px-4 py-2 text-xs font-bold transition-all ${
                   hasVoted
-                    ? "border-pink-500/60 bg-pink-500/20 text-pink-400"
-                    : "border-slate-800 bg-slate-800 text-slate-300 hover:border-pink-500/40 hover:text-pink-400"
+                    ? "border-primary/60 bg-primary/20 text-primary"
+                    : "border-dark-700 bg-dark-800 text-slate-300 hover:border-primary/40 hover:text-primary"
                 }`}
               >
-                <Heart className={`h-4 w-4 ${hasVoted ? "fill-pink-500 text-pink-500" : ""}`} />
-                <span>{submission.votesCount} Upvotes</span>
+                <Heart className={`h-4 w-4 ${hasVoted ? "fill-primary text-primary" : ""}`} />
+                <span className="font-tabular">{submission.votesCount} Upvotes</span>
               </button>
 
               {userRole === "organizer" && (
                 <button
                   onClick={() => setShowAwardForm(!showAwardForm)}
-                  className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-3.5 py-2 text-xs font-bold text-amber-400 hover:bg-amber-500/20"
+                  className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-3.5 py-2 text-xs font-bold text-amber-300 hover:bg-amber-500/20"
                 >
                   👑 Award Bounty
                 </button>
@@ -153,7 +153,7 @@ export function SubmissionDetailModal({
                   onClick={() => setActiveTab(tab.id as any)}
                   className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold transition-all ${
                     isActive
-                      ? "bg-slate-800 text-indigo-400 font-bold"
+                      ? "bg-dark-800 text-primary font-bold border border-primary/30"
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
@@ -224,11 +224,11 @@ export function SubmissionDetailModal({
               </div>
 
               {/* Story Narrative */}
-              <div className="rounded-2xl border border-slate-800 bg-slate-950/70 p-6 space-y-4">
-                <span className="block text-xs font-semibold uppercase tracking-wider text-indigo-400">
+              <div className="rounded-2xl border border-dark-800 bg-dark-950/70 p-6 space-y-4">
+                <span className="block text-xs font-semibold uppercase tracking-wider text-primary">
                   Project Description & Architecture
                 </span>
-                <div className="whitespace-pre-line text-sm text-slate-300 leading-relaxed font-sans">
+                <div className="whitespace-pre-line text-sm text-dark-200 leading-relaxed font-sans">
                   {submission.description}
                 </div>
               </div>
@@ -323,22 +323,22 @@ export function SubmissionDetailModal({
                 {submission.teamMembers.map((m) => (
                   <div
                     key={m.userId + m.name}
-                    className="flex items-center gap-3 rounded-xl border border-slate-800 bg-slate-950/60 p-3.5"
+                    className="flex items-center gap-3 rounded-xl border border-dark-800 bg-dark-950/60 p-3.5"
                   >
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-tr from-indigo-500 to-purple-600 font-bold text-white text-sm shadow-md">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-tr from-primary to-amber-600 font-bold text-dark-950 text-sm shadow-md">
                       {m.name.charAt(0)}
                     </div>
                     <div className="overflow-hidden">
                       <div className="flex items-center gap-1.5">
                         <span className="font-bold text-xs text-white truncate">{m.name}</span>
                         {m.isLeader && (
-                          <span className="rounded bg-indigo-500/20 px-1.5 py-0.2 text-[9px] font-bold text-indigo-400">
+                          <span className="rounded bg-primary/20 border border-primary/30 px-1.5 py-0.2 text-[9px] font-bold text-primary">
                             Lead
                           </span>
                         )}
                       </div>
-                      <span className="text-[11px] text-slate-400 truncate block mt-0.5">{m.role}</span>
-                      <span className="text-[10px] text-slate-500 truncate block">{m.email}</span>
+                      <span className="text-[11px] text-dark-300 truncate block mt-0.5">{m.role}</span>
+                      <span className="text-[10px] text-dark-400 truncate block">{m.email}</span>
                     </div>
                   </div>
                 ))}
@@ -348,23 +348,23 @@ export function SubmissionDetailModal({
 
           {activeTab === "scores" && (
             <div className="space-y-4 animate-in fade-in">
-              <span className="block text-xs font-semibold uppercase text-slate-400">
+              <span className="block text-xs font-semibold uppercase text-dark-400">
                 Official Judging Evaluations ({relatedScores.length})
               </span>
               <div className="space-y-3">
                 {relatedScores.map((score) => (
                   <div
                     key={score.id}
-                    className="rounded-xl border border-slate-800 bg-slate-950/60 p-4 space-y-2"
+                    className="rounded-xl border border-dark-800 bg-dark-950/60 p-4 space-y-2"
                   >
                     <div className="flex items-center justify-between">
                       <span className="font-bold text-xs text-white">{score.judgeName}</span>
-                      <span className="font-mono text-xs font-bold text-amber-400">
+                      <span className="font-mono text-xs font-bold text-primary">
                         Weighted Score: {score.totalWeightedScore.toFixed(1)} / 10
                       </span>
                     </div>
                     {score.feedback && (
-                      <p className="text-xs text-slate-300 italic border-l-2 border-indigo-500 pl-3 py-1">
+                      <p className="text-xs text-dark-200 italic border-l-2 border-primary pl-3 py-1">
                         &ldquo;{score.feedback}&rdquo;
                       </p>
                     )}

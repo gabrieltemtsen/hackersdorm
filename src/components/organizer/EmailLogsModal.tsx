@@ -36,26 +36,26 @@ export function EmailLogsModal({ onClose }: { onClose: () => void }) {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm animate-in fade-in">
       <div className="relative flex h-[85vh] w-full max-w-5xl flex-col rounded-2xl border border-slate-800 bg-slate-900 shadow-2xl overflow-hidden">
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-slate-800 bg-slate-950 px-6 py-4">
+        <div className="flex items-center justify-between border-b border-dark-800 bg-dark-950 px-6 py-4">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary border border-primary/20">
               <Mail className="h-5 w-5" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="text-lg font-bold text-white">Notification Outbox & Email Logs</h3>
-                <span className="rounded-full bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 text-[11px] font-semibold text-emerald-400 flex items-center gap-1">
+                <h3 className="text-lg font-bold text-white tracking-tight">Notification Outbox & Email Logs</h3>
+                <span className="rounded-full bg-secondary/10 border border-secondary/20 px-2 py-0.5 text-[11px] font-semibold text-secondary flex items-center gap-1">
                   <ShieldCheck className="h-3 w-3" /> Delivery Service Active
                 </span>
               </div>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-dark-300">
                 Inspect transactional receipts, registrations, and live email template previews.
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="rounded-lg p-2 text-slate-400 hover:bg-slate-800 hover:text-white"
+            className="rounded-lg p-2 text-dark-400 hover:bg-dark-800 hover:text-white transition-colors"
           >
             <X className="h-5 w-5" />
           </button>
@@ -64,10 +64,10 @@ export function EmailLogsModal({ onClose }: { onClose: () => void }) {
         {/* Content body split view */}
         <div className="grid flex-1 grid-cols-1 md:grid-cols-12 overflow-hidden">
           {/* Left Column: Email list */}
-          <div className="border-r border-slate-800 bg-slate-950/60 p-4 md:col-span-5 flex flex-col overflow-y-auto">
+          <div className="border-r border-dark-800 bg-dark-950/60 p-4 md:col-span-5 flex flex-col overflow-y-auto">
             {/* Quick Test Action */}
-            <div className="mb-4 rounded-xl border border-slate-800 bg-slate-900/80 p-3.5">
-              <span className="block text-xs font-semibold text-slate-300 mb-1.5">
+            <div className="mb-4 rounded-xl border border-dark-800 bg-dark-900/80 p-3.5">
+              <span className="block text-xs font-semibold text-dark-300 mb-1.5">
                 Dispatch Test Transactional Email
               </span>
               <div className="flex gap-2">
@@ -76,12 +76,12 @@ export function EmailLogsModal({ onClose }: { onClose: () => void }) {
                   value={testEmailAddress}
                   onChange={(e) => setTestEmailAddress(e.target.value)}
                   placeholder="recipient@example.com"
-                  className="flex-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-1.5 text-xs text-white placeholder-slate-500 focus:border-indigo-500 focus:outline-none"
+                  className="flex-1 rounded-lg border border-dark-700 bg-dark-950 px-3 py-1.5 text-xs text-white placeholder-dark-500 focus:border-primary focus:outline-none"
                 />
                 <button
                   onClick={handleSendTestEmail}
                   disabled={isSendingTest}
-                  className="flex items-center gap-1 rounded-lg bg-indigo-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-indigo-500 disabled:opacity-50"
+                  className="flex items-center gap-1 rounded-lg bg-primary px-3 py-1.5 text-xs font-bold text-dark-950 hover:bg-amber-400 disabled:opacity-50 transition-colors"
                 >
                   {isSendingTest ? <RefreshCw className="h-3 w-3 animate-spin" /> : <Send className="h-3 w-3" />}
                   Send
@@ -90,15 +90,15 @@ export function EmailLogsModal({ onClose }: { onClose: () => void }) {
             </div>
 
             {/* Email list */}
-            <div className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2 px-1">
+            <div className="text-xs font-semibold uppercase tracking-wider text-dark-400 mb-2 px-1">
               Outgoing Email Queue ({emailLogs.length})
             </div>
 
             {emailLogs.length === 0 ? (
-              <div className="flex flex-col items-center justify-center p-8 text-center text-slate-400">
-                <Mail className="h-8 w-8 text-slate-600 mb-2" />
+              <div className="flex flex-col items-center justify-center p-8 text-center text-dark-400">
+                <Mail className="h-8 w-8 text-dark-600 mb-2" />
                 <p className="text-xs">No emails sent yet in this session.</p>
-                <p className="text-[11px] text-slate-500 mt-1">
+                <p className="text-[11px] text-dark-500 mt-1">
                   Register for a hackathon, submit a project, or click &quot;Send&quot; above!
                 </p>
               </div>
@@ -112,19 +112,19 @@ export function EmailLogsModal({ onClose }: { onClose: () => void }) {
                       onClick={() => setSelectedEmailId(log.id)}
                       className={`w-full text-left rounded-xl p-3 border transition-all ${
                         isSelected
-                          ? "border-indigo-500/60 bg-indigo-500/10 text-white"
-                          : "border-slate-800/80 bg-slate-900/40 text-slate-300 hover:border-slate-700 hover:bg-slate-900"
+                          ? "border-primary/60 bg-primary/10 text-white"
+                          : "border-dark-800/80 bg-dark-900/40 text-dark-300 hover:border-dark-700 hover:bg-dark-900"
                       }`}
                     >
                       <div className="flex items-center justify-between mb-1">
-                        <span className="font-semibold text-xs truncate max-w-[200px] text-indigo-300">
+                        <span className="font-semibold text-xs truncate max-w-[200px] text-primary">
                           {log.to}
                         </span>
-                        <span className="text-[10px] text-slate-500">
+                        <span className="text-[10px] text-dark-400 font-mono">
                           {new Date(log.sentAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                         </span>
                       </div>
-                      <div className="text-xs font-medium truncate mb-1 text-slate-200">
+                      <div className="text-xs font-medium truncate mb-1 text-white">
                         {log.subject}
                       </div>
                       <div className="flex items-center gap-2">
