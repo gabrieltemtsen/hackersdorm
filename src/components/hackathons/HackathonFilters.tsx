@@ -1,0 +1,86 @@
+"use client";
+
+import React from "react";
+import { Search, SlidersHorizontal, Flame, Sparkles } from "lucide-react";
+
+interface HackathonFiltersProps {
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
+  activeStatus: string;
+  setActiveStatus: (status: string) => void;
+  selectedTrack: string;
+  setSelectedTrack: (track: string) => void;
+  availableTracks: string[];
+}
+
+export function HackathonFilters({
+  searchQuery,
+  setSearchQuery,
+  activeStatus,
+  setActiveStatus,
+  selectedTrack,
+  setSelectedTrack,
+  availableTracks,
+}: HackathonFiltersProps) {
+  const statusTabs = [
+    { id: "all", label: "All Hackathons" },
+    { id: "hacking", label: "🔥 Live Hacking" },
+    { id: "registering", label: "Registration Open" },
+    { id: "judging", label: "In Judging" },
+    { id: "ended", label: "Completed" },
+  ];
+
+  return (
+    <div className="space-y-4">
+      {/* Search Bar & Track Selector */}
+      <div className="flex flex-col gap-3 sm:flex-row">
+        <div className="relative flex-1">
+          <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search by hackathon name, tech stack, or topic..."
+            className="w-full rounded-xl border border-slate-800 bg-slate-900/90 pl-10 pr-4 py-3 text-sm text-white placeholder-slate-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+          />
+        </div>
+
+        {/* Track Filter */}
+        <div className="sm:w-64">
+          <select
+            value={selectedTrack}
+            onChange={(e) => setSelectedTrack(e.target.value)}
+            className="w-full rounded-xl border border-slate-800 bg-slate-900/90 px-4 py-3 text-sm text-slate-300 focus:border-indigo-500 focus:outline-none"
+          >
+            <option value="all">All Tracks & Categories</option>
+            {availableTracks.map((t) => (
+              <option key={t} value={t}>
+                {t}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      {/* Status Pills */}
+      <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+        {statusTabs.map((tab) => {
+          const isActive = activeStatus === tab.id;
+          return (
+            <button
+              key={tab.id}
+              onClick={() => setActiveStatus(tab.id)}
+              className={`rounded-xl px-4 py-2 text-xs font-semibold whitespace-nowrap transition-all ${
+                isActive
+                  ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/20"
+                  : "border border-slate-800 bg-slate-900/60 text-slate-400 hover:border-slate-700 hover:text-white"
+              }`}
+            >
+              {tab.label}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
