@@ -10,6 +10,8 @@
     "convex:dev": "convex dev"
   },
   "dependencies": {
+    "@clerk/nextjs": "^7.9.17",
+    "@clerk/themes": "^2.4.57",
     "canvas-confetti": "^1.9.4",
     "clsx": "^2.1.1",
     "convex": "^1.17.4",

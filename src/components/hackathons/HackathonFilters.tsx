@@ -63,7 +63,7 @@ export function HackathonFilters({
       </div>
 
       {/* Status Pills */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+      <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
         {statusTabs.map((tab) => {
           const isActive = activeStatus === tab.id;
           return (

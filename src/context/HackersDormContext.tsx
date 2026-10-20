@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { useUser } from "@clerk/nextjs";
 import {
   Hackathon,
   Submission,
@@ -55,18 +56,20 @@ interface HackersDormContextType {
 }
 
 const defaultUser: UserProfile = {
-  id: "user-current-hacker",
-  name: "Alex Vance",
-  email: "alex@hackersdorm.dev",
+  id: "user-nrs-staff",
+  name: "Ibrahim Sani",
+  email: "i.sani@nrs.gov.ng",
   role: "participant",
-  bio: "Fullstack agent builder & hackathon enthusiast",
-  skills: ["Next.js", "Convex", "TypeScript", "Python", "Tailwind CSS"],
+  bio: "Tax Operations Specialist & Process Automation Advocate @ Nigeria Revenue Service",
+  skills: ["Tax Operations", "Process Automation", "Compliance", "Python", "Service Design"],
   avatarUrl: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80",
 };
 
 const HackersDormContext = createContext<HackersDormContextType | undefined>(undefined);
 
 export function HackersDormProvider({ children }: { children: React.ReactNode }) {
+  const { user: clerkUser, isLoaded: isClerkLoaded, isSignedIn } = useUser();
+
   const [currentUser, setCurrentUser] = useState<UserProfile>(defaultUser);
   const [userRole, setUserRole] = useState<"participant" | "organizer" | "judge">("participant");
 
@@ -78,28 +81,55 @@ export function HackersDormProvider({ children }: { children: React.ReactNode })
   const [emailLogs, setEmailLogs] = useState<EmailLog[]>([]);
   const [isHydrated, setIsHydrated] = useState(false);
 
-  // Hydrate from localStorage for realistic interactive persistence
+  // Synchronize Clerk user identity
+  useEffect(() => {
+    if (isClerkLoaded && clerkUser && isSignedIn) {
+      setCurrentUser((prev) => ({
+        ...prev,
+        id: clerkUser.id,
+        name: clerkUser.fullName || clerkUser.username || clerkUser.firstName || "NRS Staff Member",
+        email: clerkUser.primaryEmailAddress?.emailAddress || prev.email,
+        avatarUrl: clerkUser.imageUrl || prev.avatarUrl,
+      }));
+    }
+  }, [clerkUser, isClerkLoaded, isSignedIn]);
+
+  // Hydrate from localStorage for realistic interactive persistence (version 2 with NRS hackathon)
   useEffect(() => {
     try {
-      const storedHackathons = localStorage.getItem("hackersdorm_hackathons");
-      if (storedHackathons) setHackathons(JSON.parse(storedHackathons));
+      const storedHackathons = localStorage.getItem("hackersdorm_hackathons_nrs_v2");
+      if (storedHackathons) {
+        setHackathons(JSON.parse(storedHackathons));
+      } else {
+        // Clear previous dummy cache
+        localStorage.removeItem("hackersdorm_hackathons");
+        localStorage.removeItem("hackersdorm_submissions");
+        localStorage.removeItem("hackersdorm_teams");
+        localStorage.removeItem("hackersdorm_announcements");
+        localStorage.removeItem("hackersdorm_scores");
+        setHackathons(INITIAL_HACKATHONS);
+        setSubmissions(INITIAL_SUBMISSIONS);
+        setTeams(INITIAL_TEAMS);
+        setAnnouncements(INITIAL_ANNOUNCEMENTS);
+        setJudgeScores(INITIAL_JUDGE_SCORES);
+      }
 
-      const storedSubmissions = localStorage.getItem("hackersdorm_submissions");
+      const storedSubmissions = localStorage.getItem("hackersdorm_submissions_nrs_v2");
       if (storedSubmissions) setSubmissions(JSON.parse(storedSubmissions));
 
-      const storedTeams = localStorage.getItem("hackersdorm_teams");
+      const storedTeams = localStorage.getItem("hackersdorm_teams_nrs_v2");
       if (storedTeams) setTeams(JSON.parse(storedTeams));
 
-      const storedAnnouncements = localStorage.getItem("hackersdorm_announcements");
+      const storedAnnouncements = localStorage.getItem("hackersdorm_announcements_nrs_v2");
       if (storedAnnouncements) setAnnouncements(JSON.parse(storedAnnouncements));
 
-      const storedScores = localStorage.getItem("hackersdorm_scores");
+      const storedScores = localStorage.getItem("hackersdorm_scores_nrs_v2");
       if (storedScores) setJudgeScores(JSON.parse(storedScores));
 
-      const storedEmails = localStorage.getItem("hackersdorm_emails");
+      const storedEmails = localStorage.getItem("hackersdorm_emails_nrs_v2");
       if (storedEmails) setEmailLogs(JSON.parse(storedEmails));
 
-      const storedRole = localStorage.getItem("hackersdorm_role");
+      const storedRole = localStorage.getItem("hackersdorm_role_nrs_v2");
       if (storedRole) setUserRole(storedRole as any);
     } catch {
       // ignore
@@ -112,13 +142,13 @@ export function HackersDormProvider({ children }: { children: React.ReactNode })
   useEffect(() => {
     if (!isHydrated) return;
     try {
-      localStorage.setItem("hackersdorm_hackathons", JSON.stringify(hackathons));
-      localStorage.setItem("hackersdorm_submissions", JSON.stringify(submissions));
-      localStorage.setItem("hackersdorm_teams", JSON.stringify(teams));
-      localStorage.setItem("hackersdorm_announcements", JSON.stringify(announcements));
-      localStorage.setItem("hackersdorm_scores", JSON.stringify(judgeScores));
-      localStorage.setItem("hackersdorm_emails", JSON.stringify(emailLogs));
-      localStorage.setItem("hackersdorm_role", userRole);
+      localStorage.setItem("hackersdorm_hackathons_nrs_v2", JSON.stringify(hackathons));
+      localStorage.setItem("hackersdorm_submissions_nrs_v2", JSON.stringify(submissions));
+      localStorage.setItem("hackersdorm_teams_nrs_v2", JSON.stringify(teams));
+      localStorage.setItem("hackersdorm_announcements_nrs_v2", JSON.stringify(announcements));
+      localStorage.setItem("hackersdorm_scores_nrs_v2", JSON.stringify(judgeScores));
+      localStorage.setItem("hackersdorm_emails_nrs_v2", JSON.stringify(emailLogs));
+      localStorage.setItem("hackersdorm_role_nrs_v2", userRole);
     } catch {
       // ignore
     }

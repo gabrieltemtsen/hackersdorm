@@ -259,8 +259,8 @@ export function OrganizerDashboard({ hackathon }: { hackathon: Hackathon }) {
           </button>
         </div>
 
-        <div className="overflow-x-auto rounded-xl border border-dark-800 bg-dark-950/40">
-          <table className="w-full text-left text-xs">
+        <div className="overflow-x-auto rounded-xl border border-dark-800 bg-dark-950/40 -mx-1 sm:mx-0">
+          <table className="w-full min-w-[580px] text-left text-xs">
             <thead className="border-b border-dark-800 bg-dark-950 text-dark-400 font-semibold">
               <tr>
                 <th className="p-3">Project Title</th>

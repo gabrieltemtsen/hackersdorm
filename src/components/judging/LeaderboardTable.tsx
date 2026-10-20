@@ -83,8 +83,8 @@ export function LeaderboardTable({ hackathon }: { hackathon: Hackathon }) {
           No projects in this track yet.
         </div>
       ) : (
-        <div className="overflow-x-auto rounded-2xl border border-dark-800/80 bg-dark-900/40 shadow-xl backdrop-blur-sm">
-          <table className="w-full text-left text-xs">
+        <div className="overflow-x-auto rounded-2xl border border-dark-800/80 bg-dark-900/40 shadow-xl backdrop-blur-sm -mx-1 sm:mx-0">
+          <table className="w-full min-w-[640px] text-left text-xs">
             <thead className="border-b border-dark-800 bg-dark-950/80 text-dark-300 uppercase tracking-wider font-semibold text-[11px]">
               <tr>
                 <th className="py-3.5 pl-4 pr-2">Rank</th>

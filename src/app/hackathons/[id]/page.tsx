@@ -126,7 +126,7 @@ export default function HackathonDetailPage() {
           {/* Main Left Content Column */}
           <div className="lg:col-span-8 space-y-6">
             {/* Interactive Tabs Header */}
-            <div className="flex items-center gap-2 overflow-x-auto border-b border-dark-800 pb-3 scrollbar-none">
+            <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto border-b border-dark-800 pb-3 scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
               {[
                 { id: "overview", label: "Overview" },
                 { id: "prizes", label: `Prizes (${hackathon.prizes.length})` },

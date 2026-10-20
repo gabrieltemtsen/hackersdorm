@@ -47,12 +47,12 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/hackathons/nexus-ai-global-hackathon/projects" className="transition-colors hover:text-primary">
+                <Link href="/hackathons/nrs-internal-hackathon-2026/projects" className="transition-colors hover:text-primary">
                   Project Gallery
                 </Link>
               </li>
               <li>
-                <Link href="/hackathons/nexus-ai-global-hackathon" className="transition-colors hover:text-primary">
+                <Link href="/hackathons/nrs-internal-hackathon-2026" className="transition-colors hover:text-primary">
                   Live Event Dashboard
                 </Link>
               </li>
